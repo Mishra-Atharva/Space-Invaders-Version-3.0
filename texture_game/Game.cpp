@@ -2,8 +2,8 @@
 #include <iostream>
 void Game::initVariables()
 {
-	this->endGame = true;
-	this->state = "end";
+	this->endGame = false;
+	this->state = "Title";
 }
 
 void Game::initWindow()
@@ -51,7 +51,7 @@ const bool Game::isRunning() const
 void Game::update()
 {
 	this->pollEvents();
-	this->ui.update(*this->window, this->endGame, this->state, this->bullet.points, this->player.health);
+	this->ui.update(*this->window, this->endGame, this->state, this->bullet.points, this->player.health, this->bullet.currentBullets);
 	if (this->player.health <= 0)
 	{
 		this->endGame = true;
@@ -62,6 +62,7 @@ void Game::update()
 		endGame = false;
 		this->ui.restart = false;
 		this->enemy.reset();
+		this->bullet.reset();
 		this->player.health = 5;
 		this->bullet.points = 0;
 		this->state = "play";

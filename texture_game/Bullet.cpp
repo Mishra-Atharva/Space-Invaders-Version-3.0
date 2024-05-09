@@ -6,6 +6,10 @@ void Bullet::initVariables()
 	this->maxBullets = 10;
 	this->moveSpeed = 5.f;
 	this->location = "character/character.png";
+	this->currentBullets = this->maxBullets;
+
+	this->buffer.loadFromFile("sound/explosion.wav");
+	this->sound.setBuffer(this->buffer);
 }
 
 void Bullet::initBullets()
@@ -28,6 +32,7 @@ void Bullet::spawnBullet(float x, float y)
 		this->initBullets();
 		this->bullet.setPosition(x, y);
 		this->bullets.push_back(this->bullet);
+		this->currentBullets--;
 	}
 }
 
@@ -40,6 +45,7 @@ void Bullet::bulletMovement(sf::RenderWindow& window)
 		if (this->bullets[bullet].getPosition().y < 0.f)
 		{
 			this->remove(bullet);
+			this->currentBullets++;
 		}
 	}
 }
@@ -52,8 +58,10 @@ void Bullet::bulletCollision(Enemy& enemies)
 		{
 			if (this->bullets[bullet].getGlobalBounds().intersects(enemies.getEnemy()[enemy].getGlobalBounds()))
 			{
+				this->sound.play();
 				this->remove(bullet);
 				this->points++;
+				this->currentBullets++;
 				enemies.remove(enemy);
 				break;
 			}
@@ -64,6 +72,12 @@ void Bullet::bulletCollision(Enemy& enemies)
 void Bullet::remove(size_t& bullet)
 {
 	this->bullets.erase(this->bullets.begin() + bullet);
+}
+
+void Bullet::reset()
+{
+	this->bullets.clear();
+	this->currentBullets = maxBullets;
 }
 
 void Bullet::update(sf::RenderWindow& window, Enemy& enemies)

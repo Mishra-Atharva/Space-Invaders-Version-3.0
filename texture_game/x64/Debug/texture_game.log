@@ -1,0 +1,4 @@
+﻿  UI.cpp
+F:\Proper_Game\texture_game\texture_game\UI.h(1,13): warning C4081: expected 'newline'; found ';'
+F:\Proper_Game\texture_game\texture_game\UI.cpp(191,23): warning C4390: ';': empty controlled statement found; is this the intent?
+  texture_game.vcxproj -> F:\Proper_Game\texture_game\x64\Debug\texture_game.exe

@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Bullet.h"
 
 class Player
@@ -8,6 +9,8 @@ private:
 	sf::Texture texture;
 	sf::Sprite player;
 	std::string location;
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
 
 	float moveSpeed;
 	

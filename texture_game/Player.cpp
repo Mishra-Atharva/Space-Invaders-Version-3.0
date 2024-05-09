@@ -6,6 +6,8 @@ void Player::initVariables()
 	this->health = 5;
 	this->moveSpeed = 5.f;
 	this->location = "character/character.png";
+	this->buffer.loadFromFile("sound/pew.wav");
+	this->sound.setBuffer(this->buffer);
 }
 
 void Player::initPlayer()
@@ -37,6 +39,7 @@ void Player::playerInput(sf::RenderWindow& window, Bullet& bullet)
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !pressed)
 	{
+		this->sound.play();
 		bullet.spawnBullet(this->player.getPosition().x, this->player.getPosition().y);
 	}
 	pressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
