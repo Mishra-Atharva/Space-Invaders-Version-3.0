@@ -5,7 +5,7 @@ The player has 3 lives, everytime an enemy touches the bottom of the screen the 
 This version of the space invaders has a menu screen and a game over screen as well as the use of sprites and background images and audio.
 
 ## How to Install
-- Download from [Space Invader Install version 3.0](https://github.com/Mishra-Atharva/Space-Invaders-version2.0-install)
+- Download from [Space Invader Install version 3.0](https://github.com/Mishra-Atharva/Space-Invaders3.0-Install)
 - Clone the `Space Invader Install version 3.0` Repository
 - Run `game.exe`
 
